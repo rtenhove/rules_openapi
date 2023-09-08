@@ -72,7 +72,7 @@ def _new_generator_command(ctx, gen_dir, rjars):
     print("new_generator_command")
     print("ctx", ctx)
     print("gen_dir", gen_dir)
-    print("ctx.attr._jdk keys", ctx.attr._jdk[java_common.JavaRuntimeInfo].keys())
+    print("current_java_runtime =", ctx.attr._jdk[java_common.JavaRuntimeInfo].current_java_runtime)
     java_path = ctx.attr._jdk[java_common.JavaRuntimeInfo].java_executable_exec_path
     print("java_path", java_path)
     gen_cmd = str(java_path)
