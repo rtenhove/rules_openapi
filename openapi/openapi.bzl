@@ -43,8 +43,6 @@ def _comma_separated_pairs(pairs):
     ])
 
 def _generator_provider(ctx):
-    print("generator_provider")
-    print(ctx)
     codegen_provider = "openapi"
     if "io_swagger_swagger_codegen_cli" in ctx.file.codegen_cli.path:
         codegen_provider = "swagger"
@@ -71,7 +69,11 @@ def _openapi_major_version(ctx):
     return int(version)
 
 def _new_generator_command(ctx, gen_dir, rjars):
+    print("new_generator_command")
+    print("ctx", ctx)
+    print("gen_dir", gen_dir)
     java_path = ctx.attr._jdk[java_common.JavaRuntimeInfo].java_executable_exec_path
+    print("java_path", java_path)
     gen_cmd = str(java_path)
     gen_cmd += " -cp {cli_jar}:{jars}".format(
         cli_jar = ctx.file.codegen_cli.path,
@@ -143,7 +145,8 @@ def _new_generator_command(ctx, gen_dir, rjars):
 
     # fixme: by default, swagger-codegen is rather verbose. this helps with that but can also mask useful error messages
     # when it fails. look into log configuration options. it's a java app so perhaps just a log4j.properties or something
-    gen_cmd += " 2>/dev/null"
+    # gen_cmd += " 2>/dev/null"
+    print("gen_cmd", gen_cmd)
     return gen_cmd
 
 def _impl(ctx):
