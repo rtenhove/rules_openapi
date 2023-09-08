@@ -43,6 +43,8 @@ def _comma_separated_pairs(pairs):
     ])
 
 def _generator_provider(ctx):
+    print("generator_provider")
+    print(ctx)
     codegen_provider = "openapi"
     if "io_swagger_swagger_codegen_cli" in ctx.file.codegen_cli.path:
         codegen_provider = "swagger"
