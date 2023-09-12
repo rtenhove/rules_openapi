@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 md5_util() {
   if [[ $OSTYPE == "darwin"* ]]; then
